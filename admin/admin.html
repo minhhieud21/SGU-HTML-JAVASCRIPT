@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../css/lamcanhan.css">
+	<meta charset="UTF-8">
+	<title>Trang Quản Lý Admin</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+</head>
+<body onload="phantaikhoan();phansanpham();xulydonhang()">
+	<div id="giaodien">
+		<div id="headerAdmin">
+			<div style="width: 100%;float: left;height: 10px;font-size: 90px;text-align: center"><img style="height: 90px" src="../images/logo.png"></i>ADMIN</div>
+		</div>
+		<div id="showoffmidAdmin">
+		<div style="height: 1300px;float: left;width: 19%;border-right:1px solid black ;border-bottom: 1px solid black;cursor: pointer;">
+			<h3 ><div class="thanhchonAdmin" onclick="quanlytaikhoan()"><i class="fas fa-user-clock"></i> Quản lý tài khoản</div>
+			<div class="thanhchonAdmin" onclick="quanlysanpham()"><i class="fas fa-clock"></i> Quản lý sản phẩm</div>
+			<div class="thanhchonAdmin" onclick="quanlydonhang()"><i class="fas fa-receipt"></i> Quản lý đơn hàng</div>
+			</h3>
+			<br>
+			<div id="dudiv"></div>
+			<div style="padding-left: 30%">
+			<h1 id="home">
+				<a href="../index.html" style="color:black;text-decoration: none"><i class="fas fa-sign-out-alt"></i>HOME</a>
+			</h1>
+			</div>
+		</div>
+		<div  style=",width: 79%;padding-top: 20px;">
+			<div  id="showoffmidAdmin1">
+				<buton class="nutthem" onclick="themsp()">+</buton>
+				<div style="float: right;font-size: 20px;text-align: center;height: 30px;width: 23%;margin-top:10px;color:#34495e;margin-right: 20px; ">Thêm sản phẩm tại đây</div>
+				<div style="width: 100%;z-index: 20;"><h2>CÁC SẢN PHẨM CỬA HÀNG BÁN </h2></div>
+				<input style="margin-bottom: 20px" onkeyup="searchad()" id="searchad" class="luachon" placeholder="NHẬP SẢN PHẨM CẦN TÌM" type="search">
+				<div style="float:left;height: 100px;width: 100%">
+					<div class="khungnhosp1">Ảnh sản phẩm</div>
+					<div class="khungnhosp1">Tên sản phẩm</div>
+					<div class="khungnhosp1">Thương hiệu</div>
+					<div class="khungnhosp1">Giá tiền</div>
+					<div class="khungnhosp1">Giới tính</div>
+					<div class="khungnhosp1">Mã sản phẩm</div>
+					<div class="khungnhosp1">Tùy chọn</div>
+				</div>
+				<div id="hienthi"></div>
+				<div id="phantrangAdmin"></div>
+			</div>
+			<div  id="showoffmidAdmin2">
+				<div style="width: 100%;z-index: 20;"><h2>CÁC TÀI KHOẢN ĐANG CÓ TRONG TÀI KHOẢN </h2></div>
+				<input style="margin-bottom: 20px" onkeyup="searchtk()" id="searchtk" class="luachon" placeholder="NHẬP TÀI KHOẢN CẦN TÌM" type="search">
+				<div style="float:left;height: 100px;width: 100%">
+					<div class="khungnhosp2">Tên người dùng</div>
+					<div class="khungnhosp2">Tài khoản</div>
+					<div class="khungnhosp2">Mật khẩu</div>
+					<div class="khungnhosp2">Địa chỉ</div>
+					<div class="khungnhosp2">Số điện thoại</div>
+					<div class="khungnhosp2">Tùy chọn</div>
+				</div>
+				<div id="hienthitaikhoan"></div>
+			</div>
+			<div id="showoffmidAdmin3">
+				<div id="donhangcuahang" style="width:100%;float:left;margin-top:10px;">
+					<h1 style="margin-left:40px;">CÁC ĐƠN HÀNG CỦA CỬA HÀNG </h1>
+						<div id="chuadonhang"></div>
+				</div>
+				<div id="chitietdonhang"></div>
+				<div id="chitietkh"></div>
+			</div>
+		</div>
+	</div>
+		
+	<div id="themsp">
+		<form>
+			<div style="width: 90%;padding-left: 20px;padding-top: 10px; height: 20%;font-size: 200%;text-align: center;">
+					<input type="button" value="+" id="dongformthem" onclick="themspout()"/>
+			</div>
+			<div style="margin: 5px;height: 60%;text-align: center;font-size: 140%;" >
+			Thông tin sản phẩm muốn thêm vào:
+			 		<br>
+					<br> Mã sản phẩm:
+					<br> <input onkeyup="checkspmoi()" id="masp" type="text" name="" placeholder="Nhập mã sản phẩm: ">
+					<br> <div id="loimasp">Bạn chưa nhập mã sản phẩm.</div>					
+					<br> Tên sản phẩm:
+					<br> <input onkeyup="checkspmoi()" id="tensp"  type="text" name="" placeholder="Nhập tên sản phẩm: ">
+					<br> <div id="loitensp">Bạn chưa nhập tên sản phẩm. </div>	
+					<br> Thương hiệu:
+					<br> <select onkeyup="checkspmoi()" id="thuonghieu" class="luachon">
+								<option  value=''>THƯƠNG HIỆU</option>
+								<option onkeyup="checkspmoi()" value='ca'>CASIO</option>
+								<option onkeyup="checkspmoi()" value='ci'>CITIZEN</option>
+								<option onkeyup="checkspmoi()" value='mv'>MVMT</option>
+								<option onkeyup="checkspmoi()" value='ed'>EDIFICE</option>
+								<option onkeyup="checkspmoi()" value='gs'>G-SHOCK</option>
+								<option onkeyup="checkspmoi()" value='or'>ORIENT</option>
+								<option onkeyup="checkspmoi()" value='op'>Olym Pianus</option>
+								<option onkeyup="checkspmoi()" value='os'>Olymphia Star</option>
+						</select>
+					<br> <div id="loithuonghieu">Bạn chưa nhập thương hiệu . </div>	
+					<br> Giới tính:
+					<br> <select onkeyup="checkspmoi()" id="gioitinh" class="luachon">
+								<option value=''>GIỚI TÍNH</option>
+								<option onkeyup="checkspmoi()"  value='nam'>NAM</option>
+								<option onkeyup="checkspmoi()"  value='nu'>NỮ</option>
+						</select>
+					<br> <div id="loigioitinh">Bạn chưa nhập giới tính. </div>	
+					<br> Giá sản phẩm:
+					<br> <input onkeyup="checkspmoi()" id="gia"  type="text" name="" placeholder="Nhập giá tiền:">
+					<br><div id="loigia">Bạn chưa nhập giá tiền. </div>	
+					<br> Chèn hình ảnh cho sản phẩm:
+					<br> <input onkeyup="checkspmoi()" id="anh"  type="file" accept="image/*">
+					<br>
+					<br> <input type="button" value="THÊM SẢN PHẨM" onclick="themspA()"/>
+			</div>
+		</form>
+	</div>
+	<div id="sua">
+		<div style="width: 90%;padding-left: 20px;padding-top: 10px; height: 10px;font-size: 200%;text-align: center;">
+					<input type="button" value="+" id="dongformsua" onclick="suaout()"/>
+		</div>
+		<div style="float: left;width: 40%;height: 862px;border:solid 1px black">
+		<h2>Thông tin sản phẩm cần sửa:</h2>
+		<img id="anhsp1" style="float: left;width:100%;height: 250px;border:solid 1px black">
+		<div  style="float: left;height: 100%;width:98%;border:solid 1px black;padding: 1%" >
+				<br>
+				<h2 id="masp1"> </h2>
+				<br>
+				<h2 id="tensp1"></h2>
+				<br>
+				<h2 id="thuonghieusp1"> </h2>
+				<br>
+				<h2 id="gioitinhsp1"></h2>
+				<br>
+				<h2 id="giasp1"></h2>
+				<br>
+		</div>
+		</div>
+		<div >
+		<form style="float: left;height: 60%font-size: 100%;width: 59%;text-align: center;font-size: 22px">
+			<h2>Thông tin cập nhật cho sản phẩm:</h2>
+			 		<br>
+					<br> Mã sản phẩm:
+					<br> <input id="masps" type="text" name="" placeholder="Nhập mã sản phẩm: ">	
+					<br>			
+					<br> Tên sản phẩm:
+					<br> <input id="tensps"  type="text" name="" placeholder="Nhập tên sản phẩm: ">
+					<br>	
+					<br> Thương hiệu:
+					<br> <select onkeyup="checkspmoi()" id="thuonghieusA" class="luachon">
+								<option  value=''>THƯƠNG HIỆU</option>
+								<option onkeyup="checkspmoi()" value='ca'>CASIO</option>
+								<option onkeyup="checkspmoi()" value='ci'>CITIZEN</option>
+								<option onkeyup="checkspmoi()" value='mv'>MVMT</option>
+								<option onkeyup="checkspmoi()" value='ed'>EDIFICE</option>
+								<option onkeyup="checkspmoi()" value='gs'>G-SHOCK</option>
+								<option onkeyup="checkspmoi()" value='or'>ORIENT</option>
+								<option onkeyup="checkspmoi()" value='op'>Olym Pianus</option>
+								<option onkeyup="checkspmoi()" value='os'>Olymphia Star</option>
+						</select>
+					<br> 	
+					<br> Giới tính:
+					<br> <select onkeyup="checkspmoi()" id="gioitinhs" class="luachon">
+								<option value=''>GIỚI TÍNH</option>
+								<option onkeyup="checkspmoi()"  value='nam'>NAM</option>
+								<option onkeyup="checkspmoi()"  value='nu'>Nữ</option>
+						</select>
+					<br>
+					<br> Giá sản phẩm:
+					<br> <input id="gias"  type="text" name="" placeholder="Nhập giá tiền:">
+					<br>	
+					<br> Chèn hình ảnh cho sản phẩm:
+					<br> <input id="anhs"  type="file" accept="image/*" name="" >
+					<br>
+					<div id="nutcapnhat"></div>
+		</form>
+		</div>
+	</div>
+	<div id="suatk">
+		<div style="width: 90%;padding-left: 20px;padding-top: 10px; height: 10px;font-size: 200%;text-align: center;">
+					<input type="button" value="+" id="dongformsua" onclick="suatkout()"/>
+		</div>
+		<div >
+			<div id="thongtintk"></div>
+		</div>
+		<div >
+		<form style="height: 60%font-size: 100%;width: 100%;text-align: center;font-size: 22px">
+			<h2>Thông tin cập nhật cho tài khoản:</h2>
+			 		<br>
+					<br> Họ và tên:
+					<br> <input id="fullnametkm" onkeyup="checkcntk()" type="text" name="" placeholder="Nhập họ và tên mới. ">					
+					<br> Tài khoản:
+					<br> <input id="usernametkm" onkeyup="checkcntk()" type="text" name="" placeholder="Nhập tên tài khoản mới. ">
+					<br> <div id="loiusernametkm">tài khoản đã tồn tại .</div>	
+					<br> Mật khẩu:
+					<br> <input id="passwordtkm" onkeyup="checkcntk()" type="password" name="" placeholder="Nhập mật khẩu mới. ">
+					<br> <div id="loipasswordtkm">Mật khẩu không hợp lệ.</div>	
+					<br>  Nhập số điện thoại:
+					<br> <input id="phonenumbertkm" onkeyup="checkcntk()" type="text" name="" placeholder="Nhập số diện thoại mới:">	
+					<br> <div id="loiphonenumbertkm">số điện thoại không hợp lệ.</div>	
+					<br> Nhập địa chỉ:
+					<br> <input id="addresstkm" onkeyup="checkcntk()"  type="text" placeholder="Nhập địa chỉ mới.">
+					<div id="nutcapnhattk"></div>
+		</form>
+		</div>
+	</div>
+	<script src="admin.js"></script>
+</body>
+</html>

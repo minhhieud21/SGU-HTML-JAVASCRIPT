@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/lamcanhan.css">
+	<meta charset="utf-8">
+	<title>SG O'Clock</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+</head>
+<body onLoad="dangnhaphoanthanh();demdulieu();">
+	<div>
+		<div id="all">
+		<div style="width: 100%;height: 100%">
+			<div id="div_menu">
+					<div id="logo" style="width: 10%;float: left;height: 10px"><a href="index.html"><img style="height: 90px;" src="./images/logo.png"></i></a></div>
+					<div style="width: 15%;float: left;height: 100px;">
+						<ul id="menu">
+							<li>
+								<a onclick="phansanpham(sanpham);dongtatca()" href="#">TRANG CHỦ</a>
+							</li>
+						</ul>
+					</div>
+					<div style="width: 15%;float: left;height: 100%;cursor: pointer;">
+						<ul id="menu">
+							<li><a onclick="hien()">THƯƠNG HIỆU</a>
+								<div style="position: absolute; z-index: 4;width: 15%">
+									<ul id="noidung" >
+										<li id="noidung1"></li>
+									</ul>
+								</div>
+							</li>					
+						</ul>
+					</div>
+					<div id="dhnam" onclick="tatth()"></div>
+					<div id="dhnu" onclick="tatth()"></div>
+					<div style="width: 8%;float: left;height: 50px;"></div>
+					<div style="cursor: pointer;padding-top: 6px;">
+						<div id="icon"></div>
+					</div>
+				</div>
+			<div style="width: 100%;top: 50px;position: absolute; z-index: 2;"><img style="z-index: 2;height: 450px" name="sliders" id="sliders" width="100%" min-height="auto"></div>
+		<div id="khungdangnhap">
+				<form onsubmit="return kiemtradangnhap()">
+				<div style="width: 90%;padding-left: 20px;padding-top: 10px; height: 20%;font-size: 200%;text-align: center;">
+					<b> ĐĂNG NHẬP</b>
+					<input type="button" value="+" class="dongform" onclick="dangnhapout()"/>
+				</div>
+				<div style="margin: 5px;height: 60%;text-align: center;font-size: 140%;" >
+					Tài Khoản
+					<br> <input  id="taikhoan" type="text" name="" placeholder="Nhập tài khoản">
+					<br><div id="loitaikhoan">Vui lòng nhập tên tài khoản.</div>
+					Mật Khẩu
+					<br> <input  id="matkhau"  type="password" name="" placeholder="Nhập mật khẩu">
+					<br><div id="loimatkhau">Vui lòng nhập mật khẩu.</div>
+					<br> <input type="submit" id="nutdangnhap" value="ĐĂNG NHẬP" />
+				</div>
+				<div style="margin: 5px;height: 20%;text-align: center;cursor: pointer;">Chưa có tài khoản ? <a onclick="dangki()"  >Đăng kí tại đây</a></div>
+				</form>
+			</div>
+			<div id="khungdangki"  >
+				<form onsubmit="return gettext()">
+					<div style="width: 90%;padding-left: 20px;padding-top: 10px; height: 20%;font-size: 200%;text-align: center;">
+					<b> ĐĂNG KÍ</b>
+					<input type="button" value="+" class="dongform" onclick="dangkiout()"/>
+				</div>
+				<div style="margin: 5px;height: 60%;text-align: center;font-size: 90%;" >
+					Họ và tên :
+					<br> <input onkeyup="ktdk()" id="name" type="text" name="" placeholder="Nhập họ và tên">
+					<br> <div id="loiname">vui lòng nhập họ tên. </div>					
+					<br> Tên tài khoản:
+					<br> <input onkeyup="ktdk()" id="username"  type="text" name="" placeholder="Nhập tài khoản">
+					<br> <div id="loiusername">vui lòng nhập tên tài khoản. </div>	
+					<br> Mật khẩu:
+					<br> <input onkeyup="ktdk()" id="password"  type="password" name="" placeholder="Nhập mật khẩu">
+					<br> <div id="loipassword">vui lòng nhập password. </div>	
+					<br> Nhập lại mật khẩu:
+					<br> <input onkeyup="ktdk()" id="passwordagain"  type="password" name="" placeholder="Nhập lại mật khẩu">
+					<br> <div id="loipassword1">Password không trùng khớp. </div>	
+					<br> Số điện thoại:
+					<br> <input onkeyup="ktdk()" id="phonenumber"  type="text" name="" placeholder="Nhập số điện thoại">
+					<br><div id="loiphonenumber">vui lòng  nhập số điện thoại. </div>
+					<br> Địa chỉ:
+					<br> <input onkeyup="ktdk()" id="address"  type="text" name="" placeholder="Nhập số địa chỉ">
+					<br><div id="loiaddress">vui lòng nhập đầy đủ địa chỉ(Số nhà và tên đường). </div>	
+					<br> <button type="submit" id="nutdangki" >ĐĂNG KÍ</button> 
+				</div>
+				<div style="margin: 5px;height: 20%;text-align: center;cursor: pointer;"><a onclick="dangnhap()">Trở lại phần đăng nhập?</a></div>	
+				</form>
+			</div>
+			<div class="noidung" id="nd"><div class="close" id="close" onclick="dongnd();"> X</div>
+				<div style="margin-top: 32px ">
+					<h1> CHÍNH SÁCH MUA HÀNG</h1>
+					<p>1. Trả hàng và hoàn lại tiền 100% theo hoá đơn bán hàng:</p>
+			 		<p>– Giao hàng không đúng theo đơn đặt hàng của quý khách .</p>
+			 		<p>– Sản phẩm còn trong thời hạn đổi mới nhưng không còn sản phẩm đổi và khách hàng không muốn đổi sang sản phẩm tương tự.</p>
+					<p>2. Trả hàng hoàn lại tiền nhưng mất phí trong các trường hợp sau:</p>
+			 		<p>– Phí 2%/ trên hóa đơn sản phẩm trả  : sản phẩm còn trong thời hạn đổi trả và đồng hồ chưa qua sử dụng .</p>
+			 		<p>– Phí 5%/ trên hóa đơn sản phẩm trả : sản phẩm còn trong thời hạn đổi trả và đồng đã qua sử dụng.</p>
+					<p>– Phí 10% / trên hóa đơn sản phẩm trả của ( từ ngày thứ 8 đến ngày thứ 12 ) . Bao gồm cả đồng hồ chưa qua sử dụng hoặc đã qua sử dụng .</p>
+			 		<p>– Phí 20% / trên hóa đơn sản phẩm trả ( từ ngày thứ 13 đến ngày thứ 20 ) . Bao gồm cả đồng chưa qua sử dụng hoặc đã qua sử dụng .</p>
+			 		<p>– Kể từ ngày giao hàng , quá thời hạn 20 ngày sản phẩm đã mua sẽ không được áp dụng chính sách trả hàng  .</p>
+				</div>
+			</div>	
+			<div class="noidung" id="bh"><div class="close" id="close" onclick="dongbh();"> X</div>
+					<div style="margin-top: 32px "><h1> CHÍNH SÁCH BẢO HÀNH</h1>
+					<p>1. Với mong muốn mang lại sự an tâm tuyệt đối cho khách hàng, cửa hàng đã và đang áp dụng chương trình Bảo Hành 5 Năm cho các sản phẩm đồng hồ chính hãng.</p>
+					<p>2. Chương trình áp dụng cho tất cả các sản phẩm giảm 10% trên giá niêm yết. Với các sản phẩm có mức giá giảm lớn hơn 10% (ví dụ như 15%, 20%, 50%…) sẽ không được áp dụng chương trình bảo hành 5 năm tại cửa hàng mà chỉ được bảo hành chính hãng.</p>
+					<p>3. Bảo hành chính hãng: Trong thời gian còn bảo hành chính hãng.</p>
+					<p>4. Bảo hành 5 năm tại cửa hàng sau khi hết thời hạn bảo hành chính hãng.</p>
+					<h2> THẺ BẢO HÀNH </h2>
+					<p> Tất cả các đồng hồ đến tay khách hàng đều kèm theo 2 phiếu bảo hành :</p>
+					<p>1. 1 Phiếu Bảo Hành Chính Hãng</p>
+			 		<p>2. 1 Phiếu Bảo Hành 5 Năm của cửa hàng (có thời hạn 5 năm kể từ ngày mua)</p>
+			 		</div>				
+			</div>
+			<div id="chua">
+				<div id="noidungsp"></div>
+				<div id="phantrang"></div>
+				<div id="gioithieu">
+					<div style="float: right;width: 30%;"> 	
+					<div class="lienhe"><b>Kết nối với chúng tôi</b></div>
+					<hr class="hr">
+					<div class="icon">
+						<div class="iconf"><a href="https://www.facebook.com"><i class="fab fa-facebook-square" ></i></a></div>
+						<div class="iconi"><a href="https://www.instagram.com"> <i class="fab fa-instagram" ></i></a></div>
+						<div class="icony"><a href="https://www.youtube.com"><i class="fab fa-youtube-square" ></i></a></div>
+					 </div>
+					</div>
+					<div class="bh">
+						<div style="cursor: pointer;" ><a onclick="shownd();" style="text-decoration: none;font-size: 15px;color: white">Chính sách mua hàng</a></div>
+						<div style="cursor: pointer; margin: 5px;"><a onclick="showbh();" style="text-decoration: none;font-size: 15px;color: white">Chính sách bảo hành </a></div>
+					</div>
+					<div class="dc">
+						<p><b>TP. HỒ CHÍ MINH</b></p>
+						<p>Địa chỉ: 273 An Dương Vương , Phường 3, Q.5</p>
+						<p>Điện thoại: 012345678 – Hotline: 098765432 </p>
+						<p>Phản ánh chất lượng dịch vụ: 024785236 </p>
+						<p>CÁM ƠN KHÁCH HÀNG ĐÃ QUAN TÂM VÀ ỦNG HỘ </p>
+					</div></div></div></div>
+			<div id="maunen"></div>	
+			<div id="bansp">
+				<div style="float: right;cursor: pointer;font-size: 50px;padding-right: 10px;margin-top: 30px;"><input type="button" value="+" class="dongform1" onclick="dongbansp()"/></div>
+				<div style="height: 100%;width: 10%;float: left;"></div>
+				<div class="anhspban">
+					<img id="anhanh" src="">	
+					<div id="ten_sp_ban" >
+						<h2 id="banspname"></h2>
+						<br>
+						<h2 id="banspgia"></h2>
+						<br>
+						<h2 id="banspnam"> </h2>
+						<br>
+						<h2 id="banspxuatsu"> </h2>
+						<br>
+						<div id="muasp">
+							<h2>SỐ LƯỢNG :</h2>
+							<button  class="soluong" onclick="giamsl();" style="margin-left: 50px; ">-</button>
+							<input class="soluong1" id="soluong1" type="text" value="1" > 
+							<button class="soluong" onclick="tangsl();">+</button>
+							<div id="bum"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        <div onclick="dongtatca();" id="maunen1"></div>
+			<div style="position: relative;">
+				<div id="seach">
+					<div><input type="search" id="search"placeholder="Nhập sản phẩm cần tìm" onkeyup="timkiem1()"></div>
+					<div style="float: right;cursor: pointer;font-size: 50px;padding-right: 10px;margin-top: 10px;"><input type="button" value="+" class="dongform" onclick="dongsearch()"/></div>
+					<div style="margin-left: 10%;float: left; ">
+						<select id="thuonghieus" onchange="timkiem1()" >
+								<option value=''>THƯƠNG HIỆU</option>
+								<option value='ca'>CASIO</option>
+								<option value='ci'>CITIZEN</option>
+								<option value='mv'>MVMT</option>
+								<option value='ed'>EDIFICE</option>
+								<option value='gs'>G-SHOCK</option>
+								<option value='or'>ORIENT</option>
+								<option value='op'>Olym Pianus</option>
+								<option value='os'>Olymphia Star</option>
+						</select>
+					</div>
+					<div style="float: left;margin-left: 10%;width: 50% ">
+						<input class="luachon" type="search" id="batdau" onchange="timkiem1()" placeholder="Nhập khoảng tiền bắt đầu">
+						<input class="luachon" type="search" id="ketthuc" onchange="timkiem1()" placeholder="Nhập khoảng tiền kết thúc">
+					</div>
+					<div id="xuatspsearch"></div>
+				</div>
+				<div id="banspsearch">
+							<div style="float: right;cursor: pointer;font-size: 50px;padding-right: 10px;margin-top: 10px;"><input type="button" value="+" class="dongform" onclick="dongsearch()"/></div>
+							<div style="height: 100%;width: 10%;float: left;"></div>
+							<div class="anhspban">
+								<img id="anh1" src="">	
+								<div  style="float: right;height: 100%;width: 40%;margin-top: 20%;border:  solid 5px black;padding: 1%">
+									<h2 id="banspname1"> </h2>
+									<h2 id="banspgia1"></h2>
+									<h2 id="banspnam1"> </h2>
+									<h2 id="banspxuatsu1"> </h2>
+									<br>
+									<div id="muasp">
+										<h2>SỐ LƯỢNG :</h2>
+										<button  class="soluong" onclick="giamsl1();" style="margin-left: 50px; ">-</button>
+										<input class="soluong1" id="soluong11" type="text" value="1" > 
+										<button class="soluong" onclick="tangsl1();">+</button>
+										<div id="bun"></div><input type="button" value="+" class="dongform" onclick="dongbanspsearch()"/>
+									</div>
+								</div>
+							</div>
+				</div>	
+			</div>
+			<div style="position: relative;">
+				<div id="giohang"></div>
+			</div>
+			<div style="position: relative;">
+				<div id="donhang"></div>
+			</div>
+		</div>
+		<div id="suatk1">
+			<div style="width: 90%;padding-left: 20px;padding-top: 10px; height: 10px;font-size: 200%;text-align: center;">
+					<input type="button" value="+" id="dongformsua" onclick="suatkout()"/>
+			</div>
+			<div >
+				<div id="thongtintk"></div>
+			</div>
+			<div >
+				<form style="height: 60%font-size: 100%;width: 100%;text-align: center;font-size: 22px">
+					<h2>Thông tin cập nhật cho tài khoản:</h2>
+			 		<br>
+					<br> Họ và tên:
+					<br> <input id="fullnametkm" onkeyup="checkcntk()" type="text" name="" placeholder="Nhập họ và tên mới. ">					
+					<br> Tài khoản:
+					<br> <input id="usernametkm" onkeyup="checkcntk()" type="text" name="" placeholder="Nhập tên tài khoản mới. ">
+					<br> <div id="loiusernametkm">tài khoản đã tồn tại .</div>	
+					<br> Mật khẩu:
+					<br> <input id="passwordtkm" onkeyup="checkcntk()" type="password" name="" placeholder="Nhập mật khẩu mới. ">
+					<br> <div id="loipasswordtkm">Mật khẩu không hợp lệ.</div>	
+					<br>  Nhập số điện thoại:
+					<br> <input id="phonenumbertkm" onkeyup="checkcntk()" type="text" name="" placeholder="Nhập số diện thoại mới:">	
+					<br> <div id="loiphonenumbertkm">số điện thoại không hợp lệ.</div>	
+					<br> Nhập địa chỉ:
+					<br> <input id="addresstkm" onkeyup="checkcntk()"  type="text" placeholder="Nhập địa chỉ mới.">
+					<div id="nutcapnhattk"></div>
+				</form>
+			</div>
+		</div>
+		<script src="lamcanhan.js"></script>
+</body>
+</html>
+
